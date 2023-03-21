@@ -1,5 +1,27 @@
 <?php 
 
+$length = isset($_GET['length']) ? $_GET['length'] : null;
+//var_dump($length);
+
+$chars = 'abcdefghilmnopqrstuvzxwyABCDEFGHILMNOPQRSTUVZXWY0123456789,.!?_-:;*#@+$£"/|^';
+
+
+function generate_psw($length, $chars) {
+    
+    $psw = [];
+    $psw_length = strlen($chars) - 1;
+    for($i = 0; $i < $length; $i++) {
+         $rand = rand(0, $psw_length);
+         $psw[] = $chars[$rand];
+         
+     }
+    
+    return $psw;
+}
+
+//var_dump(implode(generate_psw($length, $chars)));
+
+
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +39,9 @@
     <section>
         <div class="container text-center py-4">
             <h1>Strong Password Generator</h1>
+        </div>
+        <div class="container text-center">
+        <h3>Password: <?php echo implode(generate_psw($length, $chars)) ?></h3>
         </div>
         <div class="container py-5 d-flex justify-content-center">
             <form method="GET">
