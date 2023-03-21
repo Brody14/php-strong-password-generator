@@ -5,21 +5,9 @@ $length = isset($_GET['length']) ? $_GET['length'] : null;
 
 $chars = 'abcdefghilmnopqrstuvzxwyABCDEFGHILMNOPQRSTUVZXWY0123456789,.!?_-:;*#@+$£"/|^';
 
+//var_dump(__DIR__);
 
-function generate_psw($length, $chars) {
-    
-    $psw = [];
-    $psw_length = strlen($chars) - 1;
-    for($i = 0; $i < $length; $i++) {
-         $rand = rand(0, $psw_length);
-         $psw[] = $chars[$rand];
-         
-     }
-    
-    return $psw;
-}
-
-//var_dump(implode(generate_psw($length, $chars)));
+include __DIR__ . "/functions.php";
 
 
 ?>
