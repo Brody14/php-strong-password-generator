@@ -36,7 +36,7 @@ include __DIR__ . "/functions.php";
                 <div class="row mb-3">
                     <label  class="col-auto col-form-label">Lunghezza Password:</label>
                     <div class="col-auto">
-                    <input type="number" class="form-control" name="length" >
+                    <input type="number" class="form-control" name="length" value="<?= $length ?>">
                     </div>
                 </div>
                 
