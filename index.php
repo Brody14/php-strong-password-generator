@@ -1,14 +1,15 @@
 <?php 
 
+require_once __DIR__ . "/functions.php";
+
 $length = isset($_GET['length']) ? $_GET['length'] : null;
+
+if($length !== null && is_numeric($length)) {
+    $length = intval($length);
+    $psw = generate_psw($length);
+}
 //var_dump($length);
-
-$chars = 'abcdefghilmnopqrstuvzxwyABCDEFGHILMNOPQRSTUVZXWY0123456789,.!?_-:;*#@+$£"/|^';
-
 //var_dump(__DIR__);
-
-include __DIR__ . "/functions.php";
-
 
 ?>
 
@@ -29,14 +30,14 @@ include __DIR__ . "/functions.php";
             <h1>Strong Password Generator</h1>
         </div>
         <div class="container text-center">
-        <h3>Password: <?php echo implode(generate_psw($length, $chars)) ?></h3>
+        <h3>Password: <?php echo isset($psw) ? $psw : 'nessun valore inserito' ?></h3>
         </div>
         <div class="container py-5 d-flex justify-content-center">
             <form method="GET">
                 <div class="row mb-3">
                     <label  class="col-auto col-form-label">Lunghezza Password:</label>
                     <div class="col-auto">
-                    <input type="number" class="form-control" name="length" value="<?= $length ?>">
+                    <input type="number" class="form-control" required min="3" max="75" name="length" value="<?= $length ?>">
                     </div>
                 </div>
                 

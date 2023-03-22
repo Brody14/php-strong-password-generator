@@ -1,14 +1,21 @@
 <?php 
 
-function generate_psw($length, $chars) {
-    
-    $psw = [];
-    $psw_length = strlen($chars) - 1;
+function generate_psw($length) {
+
+    $chars = 'abcdefghilmnopqrstuvzxwyABCDEFGHILMNOPQRSTUVZXWY';
+    $numbers = '0123456789';
+    $symbols = ',.!?_-:;*#@+$"/|^';
+    $chars .= strtoupper($chars);
+    $chars .= $numbers;
+    $chars .= $symbols;
+    $psw='';
     for($i = 0; $i < $length; $i++) {
-         $rand = rand(0, $psw_length);
-         $psw[] = $chars[$rand];
-         
-     }
+        $psw_length = strlen($chars) - 1;
+        $rand = rand(0, $psw_length);
+        $char = $chars[$rand];
+        
+        $psw .= $char;
+    }
     
     return $psw;
 }
